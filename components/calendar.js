@@ -36,10 +36,11 @@ function EditScreen({navigation, route}){
 
 function DateScreen({navigation, route}){ //shows tasks
     let date = new Date(route.params.date)
+    let datestring = date.toDateString()
     return (
         <View style={styles.container}>
             <Text>{`${["January","February","March","April","May","June","July","August","September","October","November","December"][date.getMonth()]} ${date.getDate()}.`}</Text>
-            <Button onPress={()=>navigation.navigate("EditScreen",{date.toDateString()})} title="Edit Tasks"/>
+            <Button onPress={()=>navigation.navigate("EditScreen",{datestring})} title="Edit Tasks"/>
         </View>        
     )
 }
