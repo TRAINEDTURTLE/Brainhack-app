@@ -83,28 +83,31 @@
 //   );
 // }
 
-import React,{ Component } from 'react';
+import React,{ Component as ForumTabs } from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
-export default class App extends Component {
+export default class App extends ForumTabs {
   constructor(props) {
       super(props);
       this.state = {
           index: 0,
           routes: [
-              { key: 'first' , title: 'First' },
-              { key: 'second' , title: 'Second'}
+              { key: 'first' , title: 'Popular' },
+              { key: 'second' , title: 'Saved'},
+              { key: 'third' , title: 'Following'},
           ]
       }
   }
 
   renderScene = ({ route }) => {
       switch (route.key) {
-          case 'first':
-              return <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />;
-          case 'second':
-              return <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />;
+          case 'Popular':
+              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
+          case 'Saved':
+              return <View style={[styles.scene, { backgroundColor: '#White' }]} />;
+          case 'Following':
+              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
       }
   }
           
