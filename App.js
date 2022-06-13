@@ -7,7 +7,6 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
 import ContactScreen from './screens/ContactScreen';
-import CalendarStack from './components/calendar';
 
 const Tab = createBottomTabNavigator();
 

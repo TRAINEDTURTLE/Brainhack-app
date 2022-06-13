@@ -25,10 +25,11 @@ const db = openDatabase();
 const Stack = createStackNavigator()
 
 function EditScreen({navigation, route}){
-    let date = route.params.date
+    let date = new Date(route.params.date)
     return (
         <View>
             <Text>Edit Screen.</Text>
+            <Text>{`${["January","February","March","April","May","June","July","August","September","October","November","December"][date.getMonth()]} ${date.getDate()}.`}</Text>
             <Button title="Confirm"/>
         </View>
     )
@@ -59,7 +60,7 @@ function CalendarHome({navigation}){
         let renderedDates = [
             [<View style={styles.row}>
                 {days.map((day)=>
-                <View style={styles.button}>
+                <View key={day} style={styles.button}>
                     <Text>{day}</Text>
                 </View>)}
             </View>]
@@ -71,9 +72,9 @@ function CalendarHome({navigation}){
                 let day = firstDay+column+7*row
                 let date = new Date(d.getFullYear(),d.getMonth(),day)
                 let datestring = date.toDateString() //pass to editDate function as a String, not a class so as to not bring up any errors (must pass a serializable thing)
-                temp.push(<TouchableOpacity 
+                temp.push(<TouchableOpacity key={datestring} //need unique key
                 style={styles.button} onPress={()=>navigation.navigate("DateScreen",{datestring})}>
-                    <Text style={date.getDate()===today.getDate() && date.getMonth()===today.getMonth() ? {color:"red"} //same day
+                    <Text key={datestring} style={date.getDate()===today.getDate() && date.getMonth()===today.getMonth() ? {color:"red"} //same day
                     : date.getMonth()===today.getMonth() ? {color:"black"} //same month
                     : {color:"gray"}//diff month
                     }>
@@ -81,7 +82,7 @@ function CalendarHome({navigation}){
                     </Text>
                 </TouchableOpacity>)
             }
-            renderedDates.push(<View style={styles.row}>{temp}</View>)
+            renderedDates.push(<View key={renderedDates.length} style={styles.row}>{temp}</View>)
         }
         return renderedDates
     }
