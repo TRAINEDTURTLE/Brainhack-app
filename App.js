@@ -27,7 +27,7 @@ export default function App() {
               } else if (route.name === 'Events') {
                 iconName = 'list';
               } else if (route.name === 'Contacts'){
-                iconName = focused ? 'forum' : 'forum-o';
+                iconName = focused ? 'we-chat' : 'we-chat-o';
               }
               // You can return any component that you like here!
               return <FontAwesome name={iconName} size={size} color={color} />;
