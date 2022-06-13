@@ -107,3 +107,4 @@ const Tab = createMaterialTopTabNavigator();
       </NavigationContainer>
     );
   }
+  
