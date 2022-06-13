@@ -7,6 +7,8 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
 import ContactScreen from './screens/ContactScreen';
+import ForumScreen from './screens/ForumScreen';
+import CalendarStack from './components/calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,11 +23,11 @@ export default function App() {
               let iconName;
               //Set the icon based on which route it is (name of the tab)
               if (route.name === 'Home') {
-                iconName = 'home';
+                iconName = 'calendar';
               } else if (route.name === 'Events') {
                 iconName = 'list';
               } else if (route.name === 'Contacts'){
-                iconName = focused ? 'user' : 'user-o';
+                iconName = focused ? 'forum' : 'forum-o';
               }
               // You can return any component that you like here!
               return <FontAwesome name={iconName} size={size} color={color} />;
@@ -35,8 +37,8 @@ export default function App() {
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Events" component={EventsStack} options={{headerShown:false}}/>
-          <Tab.Screen name="Contacts" component={ContactScreen} />
+          <Tab.Screen name="Events"  component={EventsStack} options={{headerShown:false}}/>
+          <Tab.Screen name="Forum" component={ForumScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>

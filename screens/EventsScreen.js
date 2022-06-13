@@ -21,6 +21,7 @@ function EventsSecondScreen(){
     </View>
   )
 }
+
 export default function EventsStack(){
     return (
       <Stack.Navigator>
