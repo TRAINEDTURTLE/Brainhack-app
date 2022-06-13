@@ -95,16 +95,20 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 //   }
 // }
 
+import Popular from './screens/PopularTab';
+import Saved from './Screens/SavedTab';
+import Following from './Screens/FollowingTab';
+
 const Tab = createMaterialTopTabNavigator();
-  export default function App() {
+
+  export default function ForumTopTabs(){
     return (
       <NavigationContainer>
         <Tab.Navigator style={{paddingTop:20}}>
-          <Tab.Screen name="Popular" component={ChatScreen} />
-          <Tab.Screen name="Saved" component={ContactsScreen} />
-          <Tab.Screen name="Following" component={GalleryScreen} />
+          <Tab.Screen name="Popular" component={Popular} />
+          <Tab.Screen name="Saved" component={Saved} />
+          <Tab.Screen name="Following" component={Following} />
         </Tab.Navigator>
       </NavigationContainer>
     );
   }
-  
