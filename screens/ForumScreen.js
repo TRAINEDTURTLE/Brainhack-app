@@ -95,9 +95,9 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 //   }
 // }
 
-import Popular from './screens/PopularTab';
-import Saved from './Screens/SavedTab';
-import Following from './Screens/FollowingTab';
+import PopularTab from './screens/PopularTab';
+import SavedTab from './screens/SavedTab';
+import FollowingTab from './screens/FollowingTab';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -105,9 +105,9 @@ const Tab = createMaterialTopTabNavigator();
     return (
       <NavigationContainer>
         <Tab.Navigator style={{paddingTop:20}}>
-          <Tab.Screen name="Popular" component={Popular} />
-          <Tab.Screen name="Saved" component={Saved} />
-          <Tab.Screen name="Following" component={Following} />
+          <Tab.Screen name="Popular" component={PopularTab} />
+          <Tab.Screen name="Saved" component={SavedTab} />
+          <Tab.Screen name="Following" component={FollowingTab} />
         </Tab.Navigator>
       </NavigationContainer>
     );
