@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Text, View, Button } from 'react-native';
-import { createStackNavigation, createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
+
 function ForumScreen() {
+  const navigation = useNavigation();
+
     return (
       <View style={{ flex: 1, justifyContent: 'top', alignItems: 'left' }}>
         <Text>Input discussion here!</Text>
@@ -18,6 +21,7 @@ function ForumScreen() {
   }
 
   function ForumSecondScreen() {
+    const navigation = useNavigation();
     return (
       <View style = {{ flex: 1, justifyContent: 'top', alignItems: 'center' }} > 
         <Text>Saved items</Text>
