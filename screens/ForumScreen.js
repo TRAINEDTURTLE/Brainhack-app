@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Stylesheet, Text, View, Button } from 'react-native';
-import { createStackNavigator } from "@react-navigation/stack";
-import { useNavigation, NavigationContainer } from "@react-navigation/native";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+// import * as React from 'react';
+// import { Stylesheet, Text, View, Button } from 'react-native';
+// import { createStackNavigator } from "@react-navigation/stack";
+// import { useNavigation, NavigationContainer } from "@react-navigation/native";
+// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // function ForumScreen() {
 //   const Tab = createMaterialTopTabNavigator();
@@ -45,40 +45,83 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // import SavedTab from './screens/SavedTab';
 // import FollowingTab from './screens/FollowingTab';
 
-const Tab = createMaterialTopTabNavigator();
+// const Tab = createMaterialTopTabNavigator();
 
-function Following() {
-  return (
-    <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
-      <Text>Following items</Text>
-    </View>
-    )
+// function Following() {
+//   return (
+//     <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
+//       <Text>Following items</Text>
+//     </View>
+//     )
+// }
+
+// function Saved() {
+//   return (
+//     <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
+//       <Text>Saved items</Text>
+//     </View>
+//     )
+// }
+
+// function Popular() {
+//   return (
+//     <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
+//       <Text>Popular items</Text>
+//     </View>
+//     )
+// }
+
+// export default function ForumTabs(){
+//   return (
+//     <NavigationContainer>
+//       <Tab.Navigator style={{paddingTop:20}}>
+//         <Tab.Screen name="Popular" component={ Popular } />
+//         <Tab.Screen name="Saved" component={Saved} />
+//          <Tab.Screen name="Following" component={Following} />
+//       </Tab.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
+import React,{ Component } from 'react';
+import {StyleSheet, View, Dimensions} from 'react-native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+
+export default class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          index: 0,
+          routes: [
+              { key: 'first' , title: 'First' },
+              { key: 'second' , title: 'Second'}
+          ]
+      }
+  }
+
+  renderScene = ({ route }) => {
+      switch (route.key) {
+          case 'first':
+              return <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />;
+          case 'second':
+              return <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />;
+      }
+  }
+          
+  render() {
+      return(
+          <TabView
+              navigationState={{ index: this.state.index, routes: this.state.routes }}
+              renderScene={this.renderScene}
+              onIndexChange={index=>this.setState({index})}
+              initialLayout={{width: Dimensions.get('window').width}}
+          />
+      );
+  }
 }
 
-function Saved() {
-  return (
-    <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
-      <Text>Saved items</Text>
-    </View>
-    )
-}
-
-function Popular() {
-  return (
-    <View style={{alignItems:'center', justifyContent:'center', flex:1,}}>
-      <Text>Popular items</Text>
-    </View>
-    )
-}
-
-export default function ForumTabs(){
-  return (
-    <NavigationContainer>
-      <Tab.Navigator style={{paddingTop:20}}>
-        <Tab.Screen name="Popular" component={ Popular } />
-        <Tab.Screen name="Saved" component={Saved} />
-         <Tab.Screen name="Following" component={Following} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+const styles = StyleSheet.create({
+  scene: {
+      flex: 1
+  }
+});

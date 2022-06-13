@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { SafeAreaView, StatusBar } from 'react-native';
 
 //tabs
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
-import ForumTabs from './screens/ForumScreen';
+import Component from './screens/ForumScreen';
 import CalendarStack from './components/calendar';
 
 const Tab = createBottomTabNavigator();
@@ -39,7 +38,7 @@ export default function App() {
         >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Events"  component={EventsStack} options={{headerShown:false}}/>
-          <Tab.Screen name="Forum" component={ForumTabs} />
+          <Tab.Screen name="Forum" component={Component} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
