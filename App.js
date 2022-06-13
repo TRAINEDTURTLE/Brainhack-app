@@ -6,7 +6,6 @@ import { SafeAreaView, StatusBar } from 'react-native';
 //tabs
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
-import ContactScreen from './screens/ContactScreen';
 import ForumScreen from './screens/ForumScreen';
 import CalendarStack from './components/calendar';
 
