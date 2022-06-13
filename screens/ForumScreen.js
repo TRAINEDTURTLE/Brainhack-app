@@ -71,7 +71,7 @@ function Popular() {
     )
 }
 
-export function ForumTabs(){
+export default function ForumTabs(){
   return (
     <NavigationContainer>
       <Tab.Navigator style={{paddingTop:20}}>
