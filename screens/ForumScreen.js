@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, Button } from 'react-native';
-import { createStackNavigation } from "@react-navigation/stack";
+import { createStackNavigation, createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
 function ForumScreen() {
@@ -40,7 +40,7 @@ function ForumScreen() {
     )
   }
 
-  const Stack  =createStackNavigation();
+  const Stack  = createStackNavigator();
 
   export default function ForumStack() {
     return (
