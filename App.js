@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { SafeAreaView, StatusBar } from 'react-native';
 
@@ -9,7 +10,9 @@ import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
 import ForumScreen from './screens/ForumScreen';
 import CalendarStack from './components/calendar';
-
+import Popular from './screens/PopularTab';
+import Saved from './Screens/SavedTab';
+import Following from './Screens/FollowingTab';
 
 
 const Tab = createBottomTabNavigator();
