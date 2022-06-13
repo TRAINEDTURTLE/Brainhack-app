@@ -8,7 +8,6 @@ import { SafeAreaView, StatusBar } from 'react-native';
 //tabs
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
-//import ForumScreen from './screens/ForumScreen';
 import ForumTabs from './screens/ForumScreen';
 import CalendarStack from './components/calendar';
 
@@ -29,7 +28,7 @@ export default function App() {
               } else if (route.name === 'Events') {
                 iconName = 'list';
               } else if (route.name === 'Forum'){
-                iconName = focused ? 'we-chat' : 'we-chat-o';
+                iconName = 'comments';
               }
               // You can return any component that you like here!
               return <FontAwesome name={iconName} size={size} color={color} />;
