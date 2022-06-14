@@ -129,15 +129,4 @@ const styles = StyleSheet.create({
   scene: {
       flex: 1
   },
-  root: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    width: "100%",
-    marginTop: 20,
-    fontSize: 25,
-    fontWeight: "bold",
-    marginLeft: "10%",
-  },
 });
