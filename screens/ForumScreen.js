@@ -84,12 +84,9 @@
 // // }
 
 
-// top tabs
 import React,{ Component as ForumTabs } from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
-    
-
 import { useState, useEffect } from 'react';
 import {
     SafeAreaView,
@@ -101,43 +98,7 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
-
-
-export default class App extends ForumTabs {
-  constructor(props) {
-      super(props);
-      this.state = {
-          index: 0,
-          routes: [
-              { key: 'first' , title: 'Popular' },
-              { key: 'second' , title: 'Saved'},
-              { key: 'third' , title: 'Following'},
-          ]
-      }
-  }
-
-  renderScene = ({ route }) => {
-      switch (route.key) {
-          case 'Popular':
-              return <View style={[styles.scene, { backgroundColor: 'white' }]} />; 
-          case 'Saved':
-              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
-          case 'Following':
-              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
-      }
-  }
-          
-  render() {
-      return(
-          <TabView
-              navigationState={{ index: this.state.index, routes: this.state.routes }}
-              renderScene={this.renderScene}
-              onIndexChange={index=>this.setState({index})}
-              initialLayout={{width: Dimensions.get('window').width}}
-          />
-      );
-  }
-}
+import Searchbar from '../shared/SearchBar'
 
 const styles = StyleSheet.create({
   scene: {
@@ -149,32 +110,28 @@ const styles = StyleSheet.create({
     },
 });
 
+export class ForumTabs {
+    constructor() {
+        const [value, setValue] = useState();
+        function updateSearch(value) {
+            //do your search logic or anything
+            console.log(value);
+        }
+        return (
 
+            <View style={styles.container}>
+                <View style={{ height: '20%', backgroundColor: "#3F569C", borderRadius: 10, }}>
+                    <Image
+                        style={{ marginTop: '15%', marginLeft: '5%' }}
+                        source={require('../../assets/images/ic_back.png')} />
+                    <Searchbar
+                        value={value}
+                        updateSearch={updateSearch}
+                        style={{ marginTop: '8%' }} />
+                </View>
 
-// search bar
-
-import Searchbar from '../shared/SearchBar'
-
-export default function Home() {
-    const [value, setValue] = useState()
-    function updateSearch(value) {
-        //do your search logic or anything
-        console.log(value)
-    }
-    return (
-
-        <View style={styles.container}>
-            <View style={{ height: '20%', backgroundColor: "#3F569C", borderRadius: 10, }}>
-                <Image
-                    style={{ marginTop: '15%', marginLeft: '5%' }}
-                    source={require('../../assets/images/ic_back.png')} />
-                <Searchbar
-                    value={value}
-                    updateSearch={updateSearch}
-                    style={{ marginTop: '8%' }}
-                />
             </View>
-
-        </View>
-    )
+        );
+    }
+    render;
 }
