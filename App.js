@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <SafeAreaView style={{flex:1}}>
-
+      <View style={styles.root}><ForumTabs /></View>;
       <StatusBar/>
       <NavigationContainer>
         <Tab.Navigator
