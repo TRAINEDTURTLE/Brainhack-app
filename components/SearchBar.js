@@ -21,7 +21,7 @@ export default function Searchbar({ value, updateSearch, style }) {
                 <View style={styles.vwSearch}>
                     <Image
                         style={styles.icSearch}
-                        source={require('../../assets/images/ic_search.png')} />
+                        source={require('../assets/ic_search.png')} />
                 </View>
 
                 <TextInput
@@ -48,7 +48,7 @@ export default function Searchbar({ value, updateSearch, style }) {
                             style={styles.vwClear}>
                             <Image
                                 style={styles.icClear}
-                                source={require('../../assets/images/ic_clear.png')} />
+                                source={require('../assets/images/ic_clear.png')} />
                         </TouchableOpacity>
                         : <View style={styles.vwClear} />
                 }
