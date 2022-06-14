@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useState, useEffect } from 'react';
 import {
-  StatusBar,
   SafeAreaView,
   StyleSheet,
   ScrollView,
