@@ -1,88 +1,106 @@
-import React from "react";
-import { StyleSheet, TextInput, View, Keyboard, Button } from "react-native";
-import { Feather, Entypo } from "@expo/vector-icons";
+import React, { useState, useEffect } from 'react';
+import {
+    SafeAreaView,
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    StatusBar,
+    FlatList,
+    TouchableOpacity,
+    TextInput, Image
+} from 'react-native';
 
-const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setCLicked}) => {
-  return (
-    <View style={styles.container}>
-      <View
-        style={
-          clicked
-            ? styles.searchBar__clicked
-            : styles.searchBar__unclicked
-        }
-      >
-        {/* search Icon */}
-        <Feather
-          name="search"
-          size={20}
-          color="black"
-          style={{ marginLeft: 1 }}
-        />
-        {/* Input field */}
-        <TextInput
-          style={styles.input}
-          placeholder="Search"
-          value={searchPhrase}
-          onChangeText={setSearchPhrase}
-          onFocus={() => {
-            setClicked(true);
-          }}
-        />
-        {/* cross Icon, depending on whether the search bar is clicked or not */}
-        {clicked && (
-          <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
-              setSearchPhrase("")
-          }}/>
-        )}
-      </View>
-      {/* cancel button, depending on whether the search bar is clicked or not */}
-      {clicked && (
-        <View>
-          <Button
-            title="Cancel"
-            onPress={() => {
-              Keyboard.dismiss();
-              setClicked(false);
-            }}
-          ></Button>
-        </View>
-      )}
-    </View>
-  );
-};
-export default SearchBar;
+export default function Searchbar({ value, updateSearch, style }) {
 
-// styles
+    const [query, setQuery] = useState();
+    const [error, setError] = useState()
+    return (
+        <View style={[styles.container, style]}>
+            <View style={styles.searchContainer}>
+                <View style={styles.vwSearch}>
+                    <Image
+                        style={styles.icSearch}
+                        source={require('../../assets/images/ic_search.png')} />
+                </View>
+
+                <TextInput
+                    value={query}
+                    placeholder="Search"
+                    style={styles.textInput}
+                    onChangeText={(text) => {
+                        var letters = /^$|^[a-zA-Z._\b ]+$/;
+                        if (text.length > 12)
+                            setError("Query too long.")
+                        else if (text.match(letters)) {
+                            setQuery(text)
+                            updateSearch(text)
+                            if (error)
+                                setError(false)
+                        }
+                        else setError("Please only enter alphabets")
+                    }}
+                />
+                {
+                    query ?
+                        <TouchableOpacity
+                            onPress={() => setQuery('')}
+                            style={styles.vwClear}>
+                            <Image
+                                style={styles.icClear}
+                                source={require('../../assets/images/ic_clear.png')} />
+                        </TouchableOpacity>
+                        : <View style={styles.vwClear} />
+                }
+
+            </View>
+            {
+                error &&
+                <Text style={styles.txtError}>
+                    {error}
+                </Text>
+            }
+        </View >
+    )
+}
 const styles = StyleSheet.create({
-  container: {
-    margin: 15,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    flexDirection: "row",
-    width: "90%",
+    txtError: {
+        marginTop: '2%',
+        width: '89%',
+        color: 'white',
 
-  },
-  searchBar__unclicked: {
-    padding: 10,
-    flexDirection: "row",
-    width: "95%",
-    backgroundColor: "#d9dbda",
-    borderRadius: 15,
-    alignItems: "center",
-  },
-  searchBar__clicked: {
-    padding: 10,
-    flexDirection: "row",
-    width: "80%",
-    backgroundColor: "#d9dbda",
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  input: {
-    fontSize: 20,
-    marginLeft: 10,
-    width: "90%",
-  },
+    },
+    vwClear: {
+        flex: 0.2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textInput: {
+        // backgroundColor: 'green',
+        flex: 1,
+    },
+
+    vwSearch: {
+        flex: 0.2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // width: 40,
+        // backgroundColor: 'red'
+    },
+    icSearch: {
+        height: 18, width: 18
+    },
+    searchContainer:
+    {
+        backgroundColor: 'white',
+        width: '90%',
+        height: 40,
+        flexDirection: 'row'
+
+    },
+    container: {
+        height: 80,
+        alignItems: 'center',
+        // height: '100%', width: '100%' 
+    },
 });
