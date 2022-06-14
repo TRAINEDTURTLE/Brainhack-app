@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { SafeAreaView, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 
 //tabs
 import HomeScreen from './screens/HomeScreen';
@@ -15,6 +15,9 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <SafeAreaView style={{flex:1}}>
+      
+      <View style={styles.root}><ForumTabs /></View>
+
       <StatusBar/>
       <NavigationContainer>
         <Tab.Navigator

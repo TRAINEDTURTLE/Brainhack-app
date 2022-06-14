@@ -83,9 +83,61 @@
 //   );
 // }
 
+
+// top tabs
 import React,{ Component as ForumTabs } from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
+
+
+// search bar
+import { useState, useEffect } from "react";
+import {  Text,  SafeAreaView,  ActivityIndicator, } from "react-native";
+import List from "../components/List";
+import SearchBar from "../components/SearchBar";
+
+const ForumTab = () => {
+    const [searchPhrase, setSearchPhrase] = useState("");
+    const [clicked, setClicked] = useState(false);
+    const [fakeData, setFakeData] = useState();
+
+ // get data from the fake api endpoint
+    useEffect(() => {
+        const getData = async () => {
+            const apiResponse = await fetch(
+                "https://my-json-server.typicode.com/kevintomas1995/logRocket_searchBar/languages"
+             );
+        const data = await apiResponse.json();
+        setFakeData(data);
+        };
+        getData();
+    }, []);
+
+    return (
+        <SafeAreaView style={styles.root}>
+          {!clicked && <Text style={styles.title}>Programming Languages</Text>}
+    
+          <SearchBar
+            searchPhrase={searchPhrase}
+            setSearchPhrase={setSearchPhrase}
+            clicked={clicked}
+            setClicked={setClicked}
+          />
+          {!fakeData ? (
+            <ActivityIndicator size="large" />
+          ) : (
+            
+              <List
+                searchPhrase={searchPhrase}
+                data={fakeData}
+                setClicked={setClicked}
+              />
+            
+          )}
+        </SafeAreaView>
+      );
+ };
+    
 
 export default class App extends ForumTabs {
   constructor(props) {
@@ -126,5 +178,16 @@ export default class App extends ForumTabs {
 const styles = StyleSheet.create({
   scene: {
       flex: 1
-  }
+  },
+  root: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    width: "100%",
+    marginTop: 20,
+    fontSize: 25,
+    fontWeight: "bold",
+    marginLeft: "10%",
+  },
 });
