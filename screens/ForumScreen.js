@@ -89,6 +89,20 @@ import React,{ Component as ForumTabs } from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
     
+
+import { useState, useEffect } from 'react';
+import {
+    SafeAreaView,
+    ScrollView,
+    Text,
+    Image,
+    StatusBar,
+    FlatList,
+    TouchableOpacity,
+    TextInput
+} from 'react-native';
+
+
 export default class App extends ForumTabs {
   constructor(props) {
       super(props);
@@ -139,19 +153,6 @@ const styles = StyleSheet.create({
 
 // search bar
 
-import React, { useState, useEffect } from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    Image,
-    StatusBar,
-    FlatList,
-    TouchableOpacity,
-    TextInput
-} from 'react-native';
 import Searchbar from '../shared/SearchBar'
 
 export default function Home() {
