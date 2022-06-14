@@ -48,7 +48,7 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Home" component={HomeScreen}/>
           <Tab.Screen name="Events"  component={EventsStack} options={{headerShown:false}}/>
           <Tab.Screen name="Forum" component={ForumTabs} />
         </Tab.Navigator>
