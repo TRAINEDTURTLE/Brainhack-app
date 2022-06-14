@@ -103,9 +103,9 @@ export default class App extends ForumTabs {
   renderScene = ({ route }) => {
       switch (route.key) {
           case 'Popular':
-              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
+              return <View style={[styles.scene, { backgroundColor: 'white' }]} />; 
           case 'Saved':
-              return <View style={[styles.scene, { backgroundColor: '#White' }]} />;
+              return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
           case 'Following':
               return <View style={[styles.scene, { backgroundColor: 'white' }]} />;
       }
