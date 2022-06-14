@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export class ForumTabs {
+export default class ForumTabs {
     constructor() {
         const [value, setValue] = useState();
         function updateSearch(value) {
