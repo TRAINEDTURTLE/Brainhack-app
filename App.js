@@ -7,7 +7,7 @@ import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 //tabs
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
-import ForumTabs from './screens/ForumScreen';
+//import ForumTabs from './screens/ForumScreen';
 import CalendarStack from './components/calendar';
 
 const Tab = createBottomTabNavigator();
@@ -36,11 +36,12 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen}/>
-          <Tab.Screen name="Events"  component={EventsStack} options={{headerShown:false}}/>
-          <Tab.Screen name="Forum" component={ForumTabs} />
+          <Tab.Screen name="Home" component={HomeScreen} options={{headerShown:false}}/>
+          <Tab.Screen name="Events" component={EventsStack} options={{headerShown:false}}/>
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
 }
+//forum tabs currently disabled
+//<Tab.Screen name="Forum" component={ForumTabs}/>

@@ -1,42 +1,68 @@
-import React, {useState} from 'react';
-import { Text, View, FlatList, TouchableOpacity, Button, StyleSheet, StatusBar} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { Text, View, FlatList, TouchableOpacity, Button, StyleSheet, StatusBar, Touchable} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack'
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { AntDesign } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
 import { render } from 'react-dom';
 
-//import * as SQLite from "expo-sqlite";
-/*
-function openDatabase() {
-  if (Platform.OS === "web") {
-    return {
-      transaction: () => {
-        return {
-          executeSql: () => {},
-        };
-      },
-    };
-  }
-  const db = SQLite.openDatabase("db.db");
-  return db;
-}
-const db = openDatabase();
-*/
 const Stack = createStackNavigator()
+
+function Task(taskname){
+    return (
+        <View style={styles.task}>
+            <Text>{taskname}</Text>
+            <TouchableOpacity>
+                    <FontAwesome name="trash" size={24} color="red" />
+                </TouchableOpacity>
+        </View>
+    )
+}
 
 
 function TaskView({navigation, route}){ //shows tasks
     let date = new Date(route.params.datestring)
     let datestring = date.toDateString()
+    useEffect(()=>{
+        navigation.setOptions({
+            headerRight:()=>(
+                <TouchableOpacity>
+                    <Entypo 
+                    name="add-to-list" 
+                    size={24} 
+                    color="black" />
+                </TouchableOpacity>
+            )
+        })
+    }
+
+    )
     return (
         <View style={styles.container}>
             <Text>{["January","February","March","April","May","June","July","August","September","October","November","December"][date.getMonth()]} {date.getDate()}</Text>
+            {Task("sample task 1")}
+            {Task("sample task 2")}
         </View>        
     )
 }
 
 function CalendarHome({navigation}){
-    const Navigation = useNavigation()
+    //setting add new Task button
+    useEffect(()=> {
+        navigation.setOptions({
+            headerRight: ()=> (
+                <TouchableOpacity>
+                    <Entypo 
+                    name="add-to-list" 
+                    size={24} 
+                    color="black" />
+                </TouchableOpacity>
+            )
+        })
+    }
+    )
+
     let d = new Date();
     const [month,setMonth] = useState(d.getMonth()); //only changing month, js automatically changes the year if month <0 or >11.
     //making the buttons and dates
@@ -89,10 +115,10 @@ function CalendarHome({navigation}){
             <Dates/>
 
             <View style={styles.agenda}>
-            <Text style={{fontSize:30,fontWeightL:"bold"}}>Today's Agenda.</Text>
-                <Text>Hee Hee Hee Haw.</Text>
-                <Text>Eat toothbrush.</Text>
-                <Text>Brush toothpaste.</Text>
+            <Text style={{fontSize:30,fontWeight:"bold"}}>Today's Agenda:</Text>
+                <Text>Wake up.</Text>
+                <Text>Brush Teeth.</Text>
+                <Text>Go to bed.</Text>
             </View>
         </View>
     )
@@ -100,7 +126,7 @@ function CalendarHome({navigation}){
 export default function CalendarStack(){
     return (
         <Stack.Navigator>
-            <Stack.Screen name="CalendarHome" component={CalendarHome} options={{headerShown:false}}/>
+            <Stack.Screen name="CalendarHome" component={CalendarHome}/>
             <Stack.Screen name="TaskView" component={TaskView}/>
         </Stack.Navigator>
     )
@@ -110,12 +136,15 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         padding:20,
-        maxHeight:"30%",
+        minWidth:"40%",
+        maxHeight:"10",
+        alignContent:"center",
         
     },
     row: {
         flexDirection:'row',
         justifyContent:'space-between',
+        padding:0,
     },
     box: {
         alignItems:"center",
@@ -124,6 +153,7 @@ const styles = StyleSheet.create({
         borderColor:'lightgrey',
         borderWidth:2,
         aspectRatio:1,
+        
     },
     agenda: {
         marginTop:10,
@@ -133,7 +163,15 @@ const styles = StyleSheet.create({
         borderRadius:10,
         padding:10,
     },
-    list: {
-        padding:10,
+    task: {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        backgroundColor:"beige",
+        borderRadius:10,
+        borderColor:"black",
+        borderWidth:1,
+        padding:5,
+        marginTop:4,
+        minWidth:"60%",
     }
 });
