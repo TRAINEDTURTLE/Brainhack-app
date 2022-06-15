@@ -2,7 +2,18 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import { useState, useEffect } from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+  TextInput
+} from 'react-native';
 
 //tabs
 import HomeScreen from './screens/HomeScreen';
