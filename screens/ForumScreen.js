@@ -5,7 +5,7 @@
 // import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
-import React,{ Component as ForumTabs } from 'react';
+import React, { Component as ForumTabs } from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 

@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import { Text, View, FlatList, TouchableOpacity, Button, StyleSheet, StatusBar, Touchable} from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack'
-import { useNavigation } from '@react-navigation/native';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { AntDesign } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons';
-import { render } from 'react-dom';
 
 const Stack = createStackNavigator()
 
@@ -137,7 +135,6 @@ const styles = StyleSheet.create({
         flex:1,
         padding:20,
         minWidth:"40%",
-        maxHeight:"10",
         alignContent:"center",
         
     },

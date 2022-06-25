@@ -18,8 +18,7 @@ import {
 //tabs
 import HomeScreen from './screens/HomeScreen';
 import EventsStack from './screens/EventsScreen';
-//import ForumTabs from './screens/ForumScreen';
-import CalendarStack from './components/calendar';
+import ForumTabs from './screens/ForumScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -49,10 +48,9 @@ export default function App() {
         >
           <Tab.Screen name="Home" component={HomeScreen} options={{headerShown:false}}/>
           <Tab.Screen name="Events" component={EventsStack} options={{headerShown:false}}/>
+          <Tab.Screen name="Forum" component={ForumTabs}/>
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
 }
-//forum tabs currently disabled
-//<Tab.Screen name="Forum" component={ForumTabs}/>
